@@ -3,6 +3,7 @@ package stepDefination;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import cucumber.api.java.en.Given;
@@ -14,13 +15,21 @@ public class SmokeTestNew
 
 	WebDriver driver;
 	
-	@Given("^Open firefox and start application$")
-	public void Open_firefox_and_start_application() throws Throwable {
+	@Given("^Open chrome and start application$")
+	public void Open_chrome_and_start_application() throws Throwable {
 	
-		System.setProperty("webdriver.chrome.driver", "C:\\LatestSeleniumDrivers\\chromedriver.exe");
-		driver=new ChromeDriver();
+		
+		
+        System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("headless");
+        options.addArguments("disable-gpu");
+        driver = new ChromeDriver(options);
+//		System.setProperty("webdriver.chrome.driver", "C:\\Users\\llanke\\Documents\\jars\\chromedriver_win32\\chromedriver.exe");
+//		driver=new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("http://www.facebook.com");
+		driver.get("http://www.google.com");
+		System.out.println("Inside the search engine");
 		
 	}
 
